@@ -1,6 +1,6 @@
 "use client";
 
-import { getToken } from "@/lib";
+import { getSession } from "next-auth/react";
 import axios from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -16,7 +16,16 @@ export async function apiRequest(
 ) {
     try {
         // Fetch token if required
-        const token = requiresToken ? await getToken() : undefined;
+        let token;
+        if (requiresToken) {
+            // Get token from NextAuth session
+            const session = await getSession();
+            token = session?.accessToken; // Access token is stored here in the NextAuth session
+
+            if (!token) {
+                throw new Error("Authentication token is missing");
+            }
+        }
 
         // Construct headers
         const defaultHeaders = {
