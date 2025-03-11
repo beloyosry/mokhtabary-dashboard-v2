@@ -113,13 +113,11 @@ export default function ProfileInfoForm({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Account Type */}
                 <div>
-                    <label className="block text-dark-500 mb-2">
-                        Account Type
-                    </label>
+                    <label className="form-label">Account Type</label>
                     <input
                         type="text"
                         aria-label="Account Type"
-                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100 opacity-70 cursor-not-allowed"
+                        className={`form-input form-input-disabled`}
                         value={session?.user.accountType}
                         disabled
                     />
@@ -127,9 +125,7 @@ export default function ProfileInfoForm({
 
                 {/* Name */}
                 <div>
-                    <label className="block text-dark-500 mb-2">
-                        Full Name
-                    </label>
+                    <label className="form-label">Full Name</label>
                     <Controller
                         name="name"
                         control={control}
@@ -137,11 +133,12 @@ export default function ProfileInfoForm({
                             <input
                                 {...field}
                                 type="text"
-                                className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
+                                className="form-input"
                                 placeholder="Enter your full name"
                             />
                         )}
                     />
+
                     {errors.name && (
                         <span className="text-red-500 text-sm mt-1">
                             {errors.name.message}
@@ -151,7 +148,7 @@ export default function ProfileInfoForm({
 
                 {/* Email */}
                 <div>
-                    <label className="block text-dark-500 mb-2">Email</label>
+                    <label className="form-label">Email</label>
                     <Controller
                         name="email"
                         control={control}
@@ -159,7 +156,7 @@ export default function ProfileInfoForm({
                             <input
                                 {...field}
                                 type="email"
-                                className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
+                                className="form-input"
                                 placeholder="Enter your email"
                             />
                         )}
@@ -173,11 +170,11 @@ export default function ProfileInfoForm({
 
                 {/* Phone */}
                 <div>
-                    <label className="block text-dark-500 mb-2">Phone</label>
+                    <label className="form-label">Phone</label>
                     <input
                         type="text"
                         aria-label="Phone"
-                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100 opacity-70 cursor-not-allowed"
+                        className="form-input form-input-disabled"
                         value={session?.user.phone}
                         disabled
                     />
@@ -188,17 +185,12 @@ export default function ProfileInfoForm({
                     <>
                         {/* Country */}
                         <div>
-                            <label className="block text-dark-500 mb-2">
-                                Country
-                            </label>
+                            <label className="form-label">Country</label>
                             <Controller
                                 name="country"
                                 control={control}
                                 render={({ field }) => (
-                                    <select
-                                        {...field}
-                                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
-                                    >
+                                    <select {...field} className="form-input">
                                         <option value="Egypt">Egypt</option>
                                         {/* Add more countries as needed */}
                                     </select>
@@ -213,17 +205,12 @@ export default function ProfileInfoForm({
 
                         {/* Governorate */}
                         <div>
-                            <label className="block text-dark-500 mb-2">
-                                Governorate
-                            </label>
+                            <label className="form-label">Governorate</label>
                             <Controller
                                 name="governorate"
                                 control={control}
                                 render={({ field }) => (
-                                    <select
-                                        {...field}
-                                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
-                                    >
+                                    <select {...field} className="form-input">
                                         <option value="Giza">Giza</option>
                                         <option value="Cairo">Cairo</option>
                                         {/* Add more governorates as needed */}
@@ -239,17 +226,12 @@ export default function ProfileInfoForm({
 
                         {/* City */}
                         <div>
-                            <label className="block text-dark-500 mb-2">
-                                City
-                            </label>
+                            <label className="form-label">City</label>
                             <Controller
                                 name="city"
                                 control={control}
                                 render={({ field }) => (
-                                    <select
-                                        {...field}
-                                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
-                                    >
+                                    <select {...field} className="form-input">
                                         <option value="Bani Ubaid">
                                             Bani Ubaid
                                         </option>
@@ -267,9 +249,7 @@ export default function ProfileInfoForm({
 
                         {/* Street */}
                         <div>
-                            <label className="block text-dark-500 mb-2">
-                                Street
-                            </label>
+                            <label className="form-label">Street</label>
                             <Controller
                                 name="street"
                                 control={control}
@@ -277,7 +257,7 @@ export default function ProfileInfoForm({
                                     <input
                                         {...field}
                                         type="text"
-                                        className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
+                                        className="form-input"
                                         placeholder="Enter your street address"
                                     />
                                 )}
@@ -295,9 +275,7 @@ export default function ProfileInfoForm({
             {/* Description - only show if not admin */}
             {showAddressFields && (
                 <div>
-                    <label className="block text-dark-500 mb-2">
-                        About (Bio)
-                    </label>
+                    <label className="form-label">About (Bio)</label>
                     <Controller
                         name="description"
                         control={control}
@@ -305,7 +283,7 @@ export default function ProfileInfoForm({
                             <textarea
                                 {...field}
                                 rows={4}
-                                className="w-full p-3 border border-dark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-100"
+                                className="form-input"
                                 placeholder="Write something about yourself..."
                             />
                         )}
@@ -322,7 +300,7 @@ export default function ProfileInfoForm({
             <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-primary-500 hover:bg-primary-600 text-white py-3 px-6 rounded-md transition duration-300 disabled:bg-primary-300 disabled:cursor-not-allowed"
+                className="form-button"
             >
                 {isLoading ? "Saving..." : "Save Changes"}
             </button>

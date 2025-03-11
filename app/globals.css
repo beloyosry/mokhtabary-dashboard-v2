@@ -3,8 +3,57 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fadcdc;
+  --color-primary-200: #f8b9b9;
+  --color-primary-300: #ed8e7b;
+  --color-primary-400: #e65f54;
+  --color-primary-500: #dc2626;
+  --color-primary-600: #ba2225;
+  --color-primary-700: #911a14;
+  --color-primary-800: #7d1d17;
+  --color-primary-900: #5e1011;
+  
+  /* Dark/Neutral Color Palette */
+  --color-dark-50: #f6f6f6;
+  --color-dark-100: #e0e0e0;
+  --color-dark-200: #b6b6b6;
+  --color-dark-300: #9e9e9e;
+  --color-dark-400: #686868;
+  --color-dark-500: #373737;
+  --color-dark-600: #1d1d1d;
+  --color-dark-700: #141414;
+  --color-dark-800: #0a0a0a;
+  --color-dark-900: #070707;
+
+
+  --primary-50: #fef2f2;
+  --primary-100: #fadcdc;
+  --primary-200: #f8b9b9;
+  --primary-300: #ed8e7b;
+  --primary-400: #e65f54;
+  --primary-500: #dc2626;
+  --primary-600: #ba2225;
+  --primary-700: #911a14;
+  --primary-800: #7d1d17;
+  --primary-900: #5e1011;
+  
+  /* Dark/Neutral Color Palette */
+  --dark-50: #f6f6f6;
+  --dark-100: #e0e0e0;
+  --dark-200: #b6b6b6;
+  --dark-300: #9e9e9e;
+  --dark-400: #686868;
+  --dark-500: #373737;
+  --dark-600: #1d1d1d;
+  --dark-700: #141414;
+  --dark-800: #0a0a0a;
+  --dark-900: #070707;
+
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -43,113 +92,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
-  /* Base styles */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  
-  /* Primary Red Color Palette */
-  --primary-50: #fef2f2;
-  --primary-100: #fadcdc;
-  --primary-200: #f8b9b9;
-  --primary-300: #ed8e7b;
-  --primary-400: #e65f54;
-  --primary-500: #dc2626;
-  --primary-600: #ba2225;
-  --primary-700: #911a14;
-  --primary-800: #7d1d17;
-  --primary-900: #5e1011;
-  
-  /* Dark/Neutral Color Palette */
-  --dark-50: #f6f6f6;
-  --dark-100: #e0e0e0;
-  --dark-200: #b6b6b6;
-  --dark-300: #9e9e9e;
-  --dark-400: #686868;
-  --dark-500: #373737;
-  --dark-600: #1d1d1d;
-  --dark-700: #141414;
-  --dark-800: #0a0a0a;
-  --dark-900: #070707;
-  
-  /* Existing theme colors - updated to match new scheme */
-  --primary: var(--primary-500);
-  --primary-foreground: #ffffff;
-  --secondary: var(--dark-50);
-  --secondary-foreground: var(--dark-700);
-  --muted: var(--dark-100);
-  --muted-foreground: var(--dark-400);
-  --accent: var(--primary-50);
-  --accent-foreground: var(--primary-700);
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: var(--dark-100);
-  --input: var(--dark-100);
-  --ring: var(--primary-500);
-  
-  /* Charts */
-  --chart-1: var(--primary-500);
-  --chart-2: #22c55e;
-  --chart-3: #3b82f6;
-  --chart-4: #f59e0b;
-  --chart-5: #8b5cf6;
-  
-  --radius: 0.625rem;
-  
-  /* Sidebar */
-  --sidebar: #ffffff;
-  --sidebar-foreground: var(--dark-700);
-  --sidebar-primary: var(--primary-500);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--primary-50);
-  --sidebar-accent-foreground: var(--primary-700);
-  --sidebar-border: var(--dark-100);
-  --sidebar-ring: var(--primary-500);
-}
-
-.dark {
-  --background: var(--dark-800);
-  --foreground: var(--dark-50);
-  --card: var(--dark-700);
-  --card-foreground: var(--dark-50);
-  --popover: var(--dark-700);
-  --popover-foreground: var(--dark-50);
-  --primary: var(--primary-500);
-  --primary-foreground: #ffffff;
-  --secondary: var(--dark-600);
-  --secondary-foreground: var(--dark-50);
-  --muted: var(--dark-600);
-  --muted-foreground: var(--dark-300);
-  --accent: var(--dark-600);
-  --accent-foreground: var(--dark-50);
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: var(--dark-600);
-  --input: var(--dark-600);
-  --ring: var(--primary-600);
-  
-  /* Charts */
-  --chart-1: var(--primary-400);
-  --chart-2: #22c55e;
-  --chart-3: #3b82f6;
-  --chart-4: #f59e0b;
-  --chart-5: #8b5cf6;
-  
-  /* Sidebar */
-  --sidebar: var(--dark-700);
-  --sidebar-foreground: var(--dark-50);
-  --sidebar-primary: var(--primary-400);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--dark-600);
-  --sidebar-accent-foreground: var(--dark-50);
-  --sidebar-border: var(--dark-600);
-  --sidebar-ring: var(--primary-600);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -157,10 +99,64 @@
   body {
     @apply bg-background text-foreground;
   }
+
+
+}
+
+@layer components{
+  .page-wrapper {
+    @apply container mx-auto px-4 mt-1 h-[70vh] overflow-y-auto;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-gray-500 dark:text-gray-300;
+  }
+
+  .form-input-disabled {
+    @apply disabled:border-gray-300 disabled:bg-gray-200 disabled:dark:bg-gray-600 disabled:dark:border-gray-600 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .form-input {
+    @apply mt-1 block w-full py-2 px-3 border border-gray-300 bg-primary-50 text-gray-900 dark:text-gray-300 dark:bg-gray-700 rounded-2xl shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:focus:ring-primary;
+  }
+
+  .form-button {
+    @apply bg-primary-500 hover:bg-primary-600 text-white py-3 px-6 rounded-md transition duration-300 disabled:bg-primary-300 cursor-pointer disabled:cursor-not-allowed;
+    @apply dark:bg-primary-600 dark:hover:bg-primary-700 dark:disabled:bg-primary-400;
+  }
+
+  .tab{
+  @apply px-4 py-2 rounded-md text-sm font-medium cursor-pointer
+  } 
+
+  .tab-active {
+    @apply text-white bg-primary-500 hover:bg-primary-700 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-500 dark:hover:bg-primary-500
+  }
+
+  .tab-inactive {
+    @apply  text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300
+  }
 }
 
 /* Custom Tailwind color extensions */
 @layer utilities {
+   /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--muted);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-500);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-600);
+  }
+
   /* Primary color utilities */
   .bg-primary-50 {
     background-color: var(--primary-50);

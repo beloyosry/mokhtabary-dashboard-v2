@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import { useAddToast } from "@/hooks/useAddToast";
 import { z } from "zod";
 import ProfileInfoForm from "@/components/profile/ProfileInfoForm";
@@ -14,6 +13,7 @@ import {
 import { ProfileData } from "@/Types";
 import Tabs from "@/components/ui/Tabs";
 import { useTabs } from "@/hooks/useTabs";
+import PageLayout from "@/layouts/PageLayout";
 
 // Define validation schemas
 const profileSchema = z.object({
@@ -303,19 +303,14 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="container mx-auto px-4">
-            <h1 className="mb-6 text-2xl font-bold">Profile Settings</h1>
-
-            {/* Tab Navigation */}
-            <Tabs
-                tabs={tabs}
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-            />
-
-            {/* Tab Content */}
-            <div className="mt-6">
-                {activeTab === "profile" && (
+        <PageLayout>
+            <Tabs>
+                <Tabs.Item
+                    label="Profile"
+                    value="profile"
+                    buttonHref="#"
+                    buttonLabel="Profile"
+                >
                     <ProfileInfoForm
                         data={getFormattedProfileData()}
                         onSubmit={(data, imageFile) =>
@@ -323,15 +318,15 @@ export default function ProfilePage() {
                         }
                         isLoading={updateProfileMutation.isPending}
                     />
-                )}
+                </Tabs.Item>
 
-                {activeTab === "password" && (
+                <Tabs.Item label="Change Password" value="password">
                     <ChangePasswordForm
                         onSubmit={changePassword}
                         isLoading={changePasswordMutation.isPending}
                     />
-                )}
-            </div>
-        </div>
+                </Tabs.Item>
+            </Tabs>
+        </PageLayout>
     );
 }

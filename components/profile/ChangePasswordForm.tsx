@@ -71,9 +71,7 @@ const ChangePasswordForm = ({
             <div className="space-y-4">
                 {/* Current Password */}
                 <div>
-                    <label className="block text-sm font-medium text-dark-500 mb-1">
-                        Current Password
-                    </label>
+                    <label className="form-label">Current Password</label>
                     <div className="relative">
                         <Controller
                             name="currentPassword"
@@ -86,7 +84,7 @@ const ChangePasswordForm = ({
                                             ? "text"
                                             : "password"
                                     }
-                                    className="w-full p-2 bg-primary-50 rounded-md border border-primary-100 focus:ring-primary-500 focus:border-primary-500 pr-10"
+                                    className="form-input"
                                     placeholder="Enter your current password"
                                 />
                             )}
@@ -114,9 +112,7 @@ const ChangePasswordForm = ({
 
                 {/* New Password */}
                 <div>
-                    <label className="block text-sm font-medium text-dark-500 mb-1">
-                        New Password
-                    </label>
+                    <label className="form-label">New Password</label>
                     <div className="relative">
                         <Controller
                             name="newPassword"
@@ -125,7 +121,7 @@ const ChangePasswordForm = ({
                                 <input
                                     {...field}
                                     type={showNewPassword ? "text" : "password"}
-                                    className="w-full p-2 bg-primary-50 rounded-md border border-primary-100 focus:ring-primary-500 focus:border-primary-500 pr-10"
+                                    className="form-input"
                                     placeholder="Enter your new password"
                                 />
                             )}
@@ -151,9 +147,7 @@ const ChangePasswordForm = ({
 
                 {/* Confirm Password */}
                 <div>
-                    <label className="block text-sm font-medium text-dark-500 mb-1">
-                        Confirm Password
-                    </label>
+                    <label className="form-label">Confirm Password</label>
                     <div className="relative">
                         <Controller
                             name="confirmPassword"
@@ -166,14 +160,14 @@ const ChangePasswordForm = ({
                                             ? "text"
                                             : "password"
                                     }
-                                    className="w-full p-2 bg-primary-50 rounded-md border border-primary-100 focus:ring-primary-500 focus:border-primary-500 pr-10"
+                                    className="form-input"
                                     placeholder="Confirm your new password"
                                 />
                             )}
                         />
                         <button
                             type="button"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-400"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-400 cursor-pointer"
                             onClick={() =>
                                 setShowConfirmPassword(!showConfirmPassword)
                             }
@@ -198,7 +192,7 @@ const ChangePasswordForm = ({
                 <button
                     type="submit"
                     disabled={isLoading || !isDirty || !isValid}
-                    className="px-6 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50"
+                    className="form-button"
                 >
                     {isLoading ? "Changing Password..." : "Change Password"}
                 </button>

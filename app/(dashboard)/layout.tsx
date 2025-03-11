@@ -11,15 +11,23 @@ export default function DashboardLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { data: session, status } = useSession();
+    const { status } = useSession();
     const router = useRouter();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
 
     useEffect(() => {
         if (status === "unauthenticated") {
             router.push("/login");
         }
     }, [status, router]);
+
+    useEffect(() => {
+        window.onscroll = () => setSidebarOpen(false);
+    }, []);
 
     if (status === "loading") {
         return (
@@ -35,34 +43,53 @@ export default function DashboardLayout({
     }
 
     return (
-        <div className="h-screen flex bg-dark-50 dark:bg-dark-800">
-            {/* Mobile sidebar overlay */}
-            {sidebarOpen && (
-                <div
-                    className="fixed inset-0 z-30 bg-dark-600 bg-opacity-75 transition-opacity lg:hidden"
-                    onClick={() => setSidebarOpen(false)}
-                />
-            )}
+        <div className="antialiased bg-[#f5f7fa] dark:bg-gray-900">
+            {/* Navbar */}
+            <Header onToggleSidebar={toggleSidebar} />
 
             {/* Sidebar */}
-            <Sidebar
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-            />
+            <Sidebar isSidebarOpen={sidebarOpen} />
 
-            {/* Main content area */}
-            <div className="flex flex-col flex-1 w-full lg:pl-64">
-                {/* Header */}
-                <Header
-                    sidebarOpen={sidebarOpen}
-                    setSidebarOpen={setSidebarOpen}
-                />
+            {/* Main Content */}
+            <main className="md:ml-64 h-screen flex justify-center items-center ">
+                <div className="relative h-[80vh] w-[85vw] dark:bg-gray-900 antialiased">
+                    <div className="bg-white h-full dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden ">
+                        {children}
+                    </div>
+                </div>
+            </main>
 
-                {/* Page content */}
-                <main className="flex-1 overflow-y-auto pt-2">
-                    <div className="container mx-auto p-4">{children}</div>
-                </main>
-            </div>
+            {/* Footer */}
+            <footer className="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow dark:bg-gray-800 dark:border-gray-600">
+                <div className="flex justify-end items-center gap-10">
+                    <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                        <li>
+                            <a
+                                href="#"
+                                className="mr-4 hover:underline hover:text-primary-500 transition-all duration-300 ease-in-out font-bold text-sm md:mr-6 "
+                            >
+                                Terms of service
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="mr-4 hover:underline hover:text-primary-500 transition-all duration-300 ease-in-out font-bold text-sm md:mr-6"
+                            >
+                                Privacy police
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="hover:underline hover:text-primary-500 transition-all duration-300 ease-in-out font-bold text-sm"
+                            >
+                                Contact information.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     );
 }
